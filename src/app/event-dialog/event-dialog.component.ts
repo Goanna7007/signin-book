@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DbAuthService } from '../db-auth.service';
+
+
+export interface DialogData {
+  eventIndex: number | null
+}
 
 @Component({
   selector: 'app-event-dialog',
@@ -9,7 +14,8 @@ import { DbAuthService } from '../db-auth.service';
 })
 export class EventDialogComponent implements OnInit {
 
-  constructor(    public dialogRef: MatDialogRef<EventDialogComponent>, public auth: DbAuthService) { }
+  constructor(    public dialogRef: MatDialogRef<EventDialogComponent>, public auth: DbAuthService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,) { }
 
   description = "";
   number : undefined | string = undefined;
@@ -17,6 +23,13 @@ export class EventDialogComponent implements OnInit {
   date = new Date() 
 
   ngOnInit(): void {
+    if (this.data.eventIndex != null){
+      let event = this.auth.station?.events[this.data.eventIndex]
+      this.description = event?.description ?? "";
+      this.number = event?.number ?? "";
+      this.red = event?.red ?? false;
+      this.date = new Date(event?.date ?? "");
+    }
   }
 
 

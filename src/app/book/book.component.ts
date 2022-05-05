@@ -42,9 +42,12 @@ export class BookComponent implements OnInit {
 
 
   //opens the event dialogue to create a new event
-  openNewEventDialog(): void {
+  openNewEventDialog(eventIndex : number | null): void {
+
+
     const dialogRef = this.dialog.open(EventDialogComponent, {
-      width: '35ch'
+      width: '35ch',
+      data: {eventIndex: eventIndex}
     });
 
     dialogRef.afterClosed().subscribe(result => {

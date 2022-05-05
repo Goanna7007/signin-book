@@ -7,7 +7,7 @@
             Mount Nelson
         </th>
 
-        <th class="redWhenActive" [class.active]="event.red" *ngFor="let event of dbAuth.station?.events">
+        <th class="redWhenActive" [class.active]="event.red" *ngFor="let event of dbAuth.station?.events; index as i" (click)="openNewEventDialog(i)">
             <ng-container *ngIf="event.number">
                 [{{ event.number }}]
             </ng-container>
@@ -20,7 +20,7 @@
         </th>
 
         <th class="addButton">
-            <button id="addEventButton" class="add" (click)="openNewEventDialog()">
+            <button id="addEventButton" class="add" (click)="openNewEventDialog(null)">
                 +
             </button>
         </th>
