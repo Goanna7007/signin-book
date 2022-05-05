@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>New Event</h1>
+<div mat-dialog-content>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Incident no. (optional)</mat-label>
+            <input matInput [(ngModel)]="number" placeholder="22-006875">
+          </mat-form-field>
+    </p>
+  
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput [(ngModel)]="description" placeholder="Vegetation Fire Proctors Road">
+          </mat-form-field>
+    </p>
+
+    <p>
+        <mat-checkbox [(ngModel)]="red" >Red</mat-checkbox>
+    </p>
+
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [(ngModel)]="date" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field> 
+    </p>
+
+    
+         
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="this.dialogRef.close()">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="create()">Create</button>
+</div>

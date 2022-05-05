@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "signin-book": {
+      "hosting": {
+        "signin-book": [
+          "signin-book"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "signin-book"
+  }
+}

@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>New Member</h1>
+<div mat-dialog-content>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="name" placeholder="A. Johns">
+          </mat-form-field>
+    </p>
+
+    
+         
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="this.dialogRef.close()">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="create()">Create</button>
+</div>

@@ -1,0 +1,58 @@
+<div class="example-container mat-elevation-z8">
+<table class="logs">
+
+
+    <tr>
+        <th class="name nameHead">
+            Mount Nelson
+        </th>
+
+        <th class="redWhenActive" [class.active]="event.red" *ngFor="let event of dbAuth.station?.events">
+            <ng-container *ngIf="event.number">
+                [{{ event.number }}]
+            </ng-container>
+            <ng-container *ngIf="!event.number">
+                &nbsp;
+            </ng-container>
+            <br>
+            <div class="description">{{ event.description }}</div>
+            {{ event.date }}
+        </th>
+
+        <th class="addButton">
+            <button id="addEventButton" class="add" (click)="openNewEventDialog()">
+                +
+            </button>
+        </th>
+    </tr>
+    
+
+    <tr *ngFor="let name of dbAuth.station?.members, let memNum = index">
+        <td class="name redWhenActive" >
+            {{ name }}
+         </td>
+
+        <td *ngFor="let event of dbAuth.station?.events; let eventIndex = index">
+            
+            <button (click)="flipAttendance(memNum, eventIndex)" class="redWhenActive" [class.active]="event.red">
+                <ng-container *ngIf="event.attendance[memNum]" >
+                    {{ toInitials(name) }}
+                </ng-container>
+            </button>
+            
+                
+        </td>
+    </tr>
+
+    <tr>
+        <td class="name addButton">
+            <button class="add" (click)="openNewMemberDialog()">
+                +
+            </button>
+        </td>
+    </tr>
+</table>
+</div>
+
+
+

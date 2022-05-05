@@ -25,7 +25,7 @@ export class EventDialogComponent implements OnInit {
     let dd = String(this.date.getDate())
     let mm = String(this.date.getMonth() + 1)
     let yyyy = this.date.getFullYear();
-    let dateString = mm + '/' + dd + '/' + yyyy;
+    let dateString = dd + '/' + mm + '/' + yyyy;
     this.auth.addEvent(this.description, this.number, this.red, dateString)
 
     this.dialogRef.close();
