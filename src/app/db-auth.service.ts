@@ -9,6 +9,7 @@ import { Station } from './station';
   providedIn: 'root'
 })
 export class DbAuthService {
+  
   title = 'signin-book';
 
   firebaseConfig = {
@@ -119,6 +120,11 @@ export class DbAuthService {
 
   //adds and event
   public addEvent(description : string, number: string | undefined, red: boolean, date: string){
+    this.updateEvent(null, description, number, red, date)
+  }
+
+
+  updateEvent(eventIndex: number | null, description: string, number: string | undefined, red: boolean, date: string) {
     if (this.station == undefined) {
       console.log("Station undefined")
       return
@@ -132,24 +138,23 @@ export class DbAuthService {
     }
 
 
+    let event = {
+      description: description,
+      number: number,
+      red: red,
+      date: date,
+      attendance: attendance
+    }
+    
 
-    if (number == undefined){
-      this.station.events.push({
-        description: description,
-        red: red,
-        date: date,
-        attendance: attendance
-      });
+    if (eventIndex == null){
+      this.station.events.push(event);
     }
     else {
-      this.station.events.push({
-        description: description,
-        number: number,
-        red: red,
-        date: date,
-        attendance: attendance
-      });
+      this.station.events[eventIndex] = event;
     }
+    
+    
     
     console.log(this.station);
     this.updateFirestore();
