@@ -35,6 +35,7 @@ export class EventDialogComponent implements OnInit {
   }
 
 
+  //creates a new event, called on save button pressed
   create(){
 
     let dd = String(this.date.getDate())
@@ -50,6 +51,16 @@ export class EventDialogComponent implements OnInit {
     }
     
 
+    this.dialogRef.close();
+  }
+
+  //deletes an event, called on delete button pressed
+  delete(){
+    if (this.data.eventIndex != null){
+      if (confirm("Are you sure you want to delete this event?")){
+        this.auth.deleteEvent(this.data.eventIndex)
+      }
+    }
     this.dialogRef.close();
   }
 }

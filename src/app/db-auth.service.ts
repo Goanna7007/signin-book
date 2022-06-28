@@ -10,6 +10,7 @@ import { Station } from './station';
 })
 export class DbAuthService {
   
+  
   title = 'signin-book';
 
   firebaseConfig = {
@@ -193,4 +194,10 @@ export class DbAuthService {
     el.scrollIntoView()
   }
   
+
+  //removes an event from the database
+  deleteEvent(eventIndex: number) {
+    this.station?.events.splice(eventIndex, 1)
+    this.updateFirestore();
+  }
 }

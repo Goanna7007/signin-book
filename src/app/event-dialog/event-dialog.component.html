@@ -35,4 +35,5 @@
   <button mat-button (click)="this.dialogRef.close()">Cancel</button>
   <button mat-button cdkFocusInitial *ngIf="newEvent" (click)="create()">Create</button>
   <button mat-button cdkFocusInitial *ngIf="!newEvent" (click)="create()">Save</button>
+  <button mat-button cdkFocusInitial *ngIf="!newEvent" (click)="delete()">Delete</button>
 </div>
