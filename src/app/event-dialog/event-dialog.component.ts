@@ -21,9 +21,11 @@ export class EventDialogComponent implements OnInit {
   number : undefined | string = undefined;
   red = false;  
   date = new Date() 
+  newEvent = true
 
   ngOnInit(): void {
     if (this.data.eventIndex != null){
+      this.newEvent = false
       let event = this.auth.station?.events[this.data.eventIndex]
       this.description = event?.description ?? "";
       this.number = event?.number ?? "";

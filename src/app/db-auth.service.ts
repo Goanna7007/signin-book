@@ -124,6 +124,7 @@ export class DbAuthService {
   }
 
 
+  //called when the user clicks on a member and the database needs to be updated
   updateEvent(eventIndex: number | null, description: string, number: string | undefined, red: boolean, date: string) {
     if (this.station == undefined) {
       console.log("Station undefined")

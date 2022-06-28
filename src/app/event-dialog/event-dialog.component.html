@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>New Event</h1>
+<h1 mat-dialog-title *ngIf="newEvent">New Event</h1>
+<h1 mat-dialog-title *ngIf="!newEvent">Edit Event</h1>
 <div mat-dialog-content>
     <p>
         <mat-form-field appearance="fill">
@@ -32,5 +33,6 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="this.dialogRef.close()">Cancel</button>
-  <button mat-button cdkFocusInitial (click)="create()">Create</button>
+  <button mat-button cdkFocusInitial *ngIf="newEvent" (click)="create()">Create</button>
+  <button mat-button cdkFocusInitial *ngIf="!newEvent" (click)="create()">Save</button>
 </div>
