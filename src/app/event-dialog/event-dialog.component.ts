@@ -32,6 +32,7 @@ export class EventDialogComponent implements OnInit {
       this.red = event?.red ?? false;
       this.date = new Date(event?.date ?? "");
     }
+    console.log(this.data.eventIndex)
   }
 
 
@@ -43,7 +44,7 @@ export class EventDialogComponent implements OnInit {
     let yyyy = this.date.getFullYear();
     let dateString = dd + '/' + mm + '/' + yyyy;
 
-    if (this.data.eventIndex != null){
+    if (this.data.eventIndex == null){
       this.auth.addEvent(this.description, this.number, this.red, dateString)
     }
     else{
