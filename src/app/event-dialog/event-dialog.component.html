@@ -1,5 +1,13 @@
-<h1 mat-dialog-title *ngIf="newEvent">New Event</h1>
-<h1 mat-dialog-title *ngIf="!newEvent">Edit Event</h1>
+
+
+<h1 style="position: relative;" mat-dialog-title>
+  <div *ngIf="newEvent">New Event</div>
+  <div *ngIf="!newEvent">Edit Event</div>
+  <button style="position: absolute; right: 0; top: 0;" mat-button (click)="this.dialogRef.close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</h1>
+
 <div mat-dialog-content>
     <p>
         <mat-form-field appearance="fill">
@@ -31,9 +39,7 @@
     
          
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="this.dialogRef.close()">Cancel</button>
-  <button mat-button cdkFocusInitial *ngIf="newEvent" (click)="create()">Create</button>
-  <button mat-button cdkFocusInitial *ngIf="!newEvent" (click)="create()">Save</button>
-  <button mat-button cdkFocusInitial *ngIf="!newEvent" (click)="delete()">Delete</button>
+<div mat-dialog-actions align="end">
+  <button mat-mini-fab color="warn"  cdkFocusInitial *ngIf="!newEvent" (click)="delete()"><mat-icon>delete</mat-icon></button>
+  <button mat-fab  color="primary" mat-button cdkFocusInitial (click)="create()"><mat-icon>save</mat-icon></button>
 </div>

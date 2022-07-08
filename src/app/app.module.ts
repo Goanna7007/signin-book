@@ -22,6 +22,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { MemberDialogComponent } from './member-dialog/member-dialog.component';
+import {MatIconModule} from '@angular/material/icon'; 
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MemberDialogComponent } from './member-dialog/member-dialog.component';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatIconModule,
     FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
