@@ -45,6 +45,13 @@ export class BookComponent implements OnInit {
   openNewEventDialog(eventIndex : number | null): void {
 
 
+    if (eventIndex != null && eventIndex < (this.dbAuth.station?.events.length ?? 0) - 3)
+    {
+      console.log("Event too long ago")
+      return
+    }
+
+
     const dialogRef = this.dialog.open(EventDialogComponent, {
       width: '35ch',
       data: {eventIndex: eventIndex}

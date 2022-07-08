@@ -131,6 +131,12 @@ export class DbAuthService {
       console.log("Station undefined")
       return
     }
+
+    if (eventIndex != null && eventIndex < this.station.events.length - 3)
+    {
+      console.log("Event too long ago")
+      return
+    }
     
     
     let attendance : boolean[] = []
