@@ -63,6 +63,30 @@ export class BookComponent implements OnInit {
   }
 
 
+
+  //asks the user if they want to move a member down a row
+  public moveMemberDown(memNum:number){
+    if (this.dbAuth.station != undefined && this.dbAuth.station.members.length > memNum + 1){
+      
+      if (confirm("Move this member down a row?")){
+
+        var temp = this.dbAuth.station.members[memNum]
+        this.dbAuth.station.members[memNum] = this.dbAuth.station.members[memNum+1]
+        this.dbAuth.station.members[memNum+1] = temp
+
+        this.dbAuth.station.events.forEach(event => {
+          var temp = event.attendance[memNum]
+          event.attendance[memNum] = event.attendance[memNum+1]
+          event.attendance[memNum+1] = temp
+        })
+
+        this.dbAuth.updateFirestore()
+      }
+    }
+  }
+
+
+
   //opens the member dialogue to create a new member
   openNewMemberDialog(): void {
     this.scrollTo()

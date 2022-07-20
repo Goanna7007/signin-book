@@ -28,7 +28,9 @@
     
 
     <tr *ngFor="let name of dbAuth.station?.members, let memNum = index">
-        <td class="name redWhenActive" >
+
+        <!-- Names in right most column -->
+        <td class="name redWhenActive" (click)="moveMemberDown(memNum)" >
             {{ name }}
          </td>
 
