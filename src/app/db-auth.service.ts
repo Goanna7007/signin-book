@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getAuth, OAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
-import { collection, doc, getFirestore, onSnapshot, setDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getFirestore, onSnapshot, setDoc, Timestamp } from 'firebase/firestore';
 import { BookComponent } from './book/book.component';
 import { Station } from './station';
 
@@ -94,6 +94,7 @@ export class DbAuthService {
   //updates the document on firebase
   public updateFirestore(){
     setDoc(this.stationDocRef, this.station)
+    setDoc(doc(this.backupCollection, Timestamp.now().toDate().toISOString()), this.station)
   }
 
 
