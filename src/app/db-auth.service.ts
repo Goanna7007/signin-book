@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { getAuth, OAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
-import { doc, getFirestore, onSnapshot, setDoc } from 'firebase/firestore';
+import { collection, doc, getFirestore, onSnapshot, setDoc } from 'firebase/firestore';
 import { BookComponent } from './book/book.component';
 import { Station } from './station';
 
@@ -27,6 +27,7 @@ export class DbAuthService {
 
   db = getFirestore(this.app)
   stationDocRef = doc(this.db, 'stations/8')
+  backupCollection = collection(this.db, 'stations/8/backups')
 
   userEmail = ""
 
@@ -94,6 +95,7 @@ export class DbAuthService {
 
   //updates the document on firebase
   public updateFirestore(){
+    console.log(this.station)
     setDoc(this.stationDocRef, this.station)
   }
 
@@ -120,13 +122,13 @@ export class DbAuthService {
 
 
   //adds and event
-  public addEvent(description : string, number: string | undefined, red: boolean, date: string){
+  public addEvent(description : string, number: string, red: boolean, date: string){
     this.updateEvent(null, description, number, red, date)
   }
 
 
   //called when the user clicks on a member and the database needs to be updated
-  updateEvent(eventIndex: number | null, description: string, number: string | undefined, red: boolean, date: string) {
+  updateEvent(eventIndex: number | null, description: string, number: string, red: boolean, date: string) {
     if (this.station == undefined) {
       console.log("Station undefined")
       return
@@ -155,6 +157,7 @@ export class DbAuthService {
     }
     
 
+    
     if (eventIndex == null){
       this.station.events.push(event);
     }

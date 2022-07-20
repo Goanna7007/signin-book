@@ -18,7 +18,7 @@ export class EventDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,) { }
 
   description = "";
-  number : undefined | string = undefined;
+  number : string = "";
   red = false;  
   date = new Date() 
   newEvent = true
