@@ -38,13 +38,11 @@ export class DbAuthService {
 
   constructor() { 
     onAuthStateChanged(getAuth(), user => {
-      console.log( `you are signed in as `, user)
 
       if (user != null && user.email != null){
         this.userEmail = user.email
         onSnapshot(this.stationDocRef, snapshot => {
           this.station = snapshot.data() as Station;
-          console.log(this.station)
 
 
           let book = this.book
@@ -95,7 +93,6 @@ export class DbAuthService {
 
   //updates the document on firebase
   public updateFirestore(){
-    console.log(this.station)
     setDoc(this.stationDocRef, this.station)
   }
 
@@ -167,7 +164,6 @@ export class DbAuthService {
     
     
     
-    console.log(this.station);
     this.updateFirestore();
   }
     
@@ -188,7 +184,6 @@ export class DbAuthService {
 
       this.updateFirestore();
     }
-    console.log("Station undefined")
   }
 
 

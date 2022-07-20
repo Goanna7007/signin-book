@@ -32,7 +32,6 @@ export class EventDialogComponent implements OnInit {
       this.red = event?.red ?? false;
       this.date = new Date(event?.date ?? "");
     }
-    console.log(this.data.eventIndex)
   }
 
 

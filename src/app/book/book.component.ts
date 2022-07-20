@@ -66,7 +66,6 @@ export class BookComponent implements OnInit {
   //opens the member dialogue to create a new member
   openNewMemberDialog(): void {
     this.scrollTo()
-    console.log("OpenNewMemberDialog() Called")
 
     const dialogRef = this.dialog.open(MemberDialogComponent, {
       width: '35ch'
