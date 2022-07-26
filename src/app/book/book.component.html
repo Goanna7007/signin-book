@@ -36,7 +36,7 @@
 
         <td *ngFor="let event of dbAuth.station?.events; let eventIndex = index">
             
-            <button (click)="flipAttendance(memNum, eventIndex)" class="redWhenActive" [class.active]="event.red">
+            <button (click)="openAttendanceDialog(eventIndex,memNum)" class="redWhenActive" [class.active]="event.red">
                 <ng-container *ngIf="event.attendance[memNum]" >
                     {{ toInitials(name) }}
                 </ng-container>

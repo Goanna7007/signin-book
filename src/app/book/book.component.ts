@@ -34,9 +34,10 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //flips the attendance of specified user at specified event
-  public flipAttendance(memNum:number,eventIndex:number){
 
+
+  //open a dialogue to change an attendance
+  openAttendanceDialog(eventIndex: number, memNum: number): void {
     this.dbAuth.flipAttendance(memNum, eventIndex)
   }
 
