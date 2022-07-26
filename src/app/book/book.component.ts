@@ -3,6 +3,7 @@ import { DbAuthService } from '../db-auth.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EventDialogComponent } from '../event-dialog/event-dialog.component';
 import { MemberDialogComponent } from '../member-dialog/member-dialog.component';
+import { AttendanceDialogComponent } from '../attendance-dialog/attendance-dialog.component';
 
 
 export interface PeriodicElement {
@@ -38,7 +39,18 @@ export class BookComponent implements OnInit {
 
   //open a dialogue to change an attendance
   openAttendanceDialog(eventIndex: number, memNum: number): void {
-    this.dbAuth.flipAttendance(memNum, eventIndex)
+
+
+    const dialogRef = this.dialog.open(AttendanceDialogComponent, {
+      width: '35ch',
+      data: {eventIndex: eventIndex, memNum: memNum}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
+
+    //this.dbAuth.flipAttendance(memNum, eventIndex)
   }
 
 
