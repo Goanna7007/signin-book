@@ -42,7 +42,7 @@ export class BookComponent implements OnInit {
 
 
     const dialogRef = this.dialog.open(AttendanceDialogComponent, {
-      width: '35ch',
+      width: '45ch',
       data: {eventIndex: eventIndex, memNum: memNum}
     });
 

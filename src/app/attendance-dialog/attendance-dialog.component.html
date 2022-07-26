@@ -1,1 +1,19 @@
-<p>attendance-dialog works!</p>
+<h3 style="position: relative;">
+    Change attendance
+    <button style="position: absolute; right: 0; top: 0;" mat-button (click)="this.dialogRef.close()">
+        <mat-icon>close</mat-icon>
+      </button>
+</h3>
+
+<h1>{{dbAuth.station!.members[data.memNum ?? 0]}}</h1>
+
+<h2 class="redWhenActive" [class.active]="dbAuth.station!.events[data.eventIndex ?? 0].red">
+    {{dbAuth.station!.events[data.eventIndex ?? 0].description}}
+    {{dbAuth.station!.events[data.eventIndex ?? 0].date}}
+</h2>
+
+
+
+<div mat-dialog-actions align="end">
+    <button mat-fab  color="primary" mat-button cdkFocusInitial (click)="save()"><mat-icon>save</mat-icon></button>
+  </div>
