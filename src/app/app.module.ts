@@ -22,14 +22,16 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { MemberDialogComponent } from './member-dialog/member-dialog.component';
-import {MatIconModule} from '@angular/material/icon'; 
+import {MatIconModule} from '@angular/material/icon';
+import { AttendanceDialogComponent } from './attendance-dialog/attendance-dialog.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
     EventDialogComponent,
-    MemberDialogComponent
+    MemberDialogComponent,
+    AttendanceDialogComponent
   ],
   imports: [
     BrowserModule,
